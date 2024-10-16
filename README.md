@@ -407,7 +407,7 @@ El siguiente es un planteamiento inicial para la base de datos que manaejaria el
     ```bash
     npm run dev
     ```
-    - El enrutamiento genetal es `http://localhost:5173/` sin embargo esto puede cambiar segun las especificaciones del usuario
+    - El enrutamiento general es `http://localhost:5173/` sin embargo esto puede cambiar segun las especificaciones del usuario
 
 ### Panel de inicio:
 - El panel de inicio es una pagina sobria, con la informacion acerca del sistema de gestion, sus servicios horarios y hubicacion y una barra de navegacion con la opcion de iniciar sesion
