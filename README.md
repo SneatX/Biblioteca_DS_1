@@ -20,7 +20,9 @@ Este proyecto tiene como objetivo desarrollar un sistema para la gestión de bib
 4. [Patrones de Diseño Implementados](#patrones-de-diseño-implementados)
 5. [Requisitos del Sistema](#requisitos-del-sistema)
 6. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-7. [Sistemas de Referencia](#sistemas-de-referencia)
+7. [Planteamiento Base de Datos](#planteamiento-base-de-datos)
+7. [Planteamiento Interfaz](#planteamiento-interfaz)
+9. [Sistemas de Referencia](#sistemas-de-referencia)
 
 ---
 
@@ -379,14 +381,46 @@ class Libro:
 - **Bibliotecas**: sqlite3 (para la base de datos), etc.
 - **Nota**: Debido a la limitacion en conocimientos, el primer boceto de las vistas se realizo en React
 
+## Planteamiento Base de Datos
+
+El siguiente es un planteamiento inicial para la base de datos que manaejaria el sistema:
+
+<img src="./imgs/Base de datos biblioteca.png"/
+
+## Planteamiento Interfaz
+- **1. Instalacion**: Si desea desplegar la interfaz propuesta en su ordenador siga los siguientes pasos
+
+    - Primero compruebe que tiene una version de node igual o superior a: `18.16.0`
+    Para realizar esto ejecute el siguiente comando:
+    ```bash
+    node --version
+    ```
+    - Si cumple con la condicion de node, ejecute el siguiente comando, de lo contrario instale node:
+    ```bash
+    git clone https://github.com/SneatX/Biblioteca_DS_1.git
+    ```
+    - Luego instale las dependencias con el siguiente comando:
+    ```bash
+    npm i
+    ```
+    - Finalmente ejecute el programa con el siguiente comando:
+    ```bash
+    npm run dev
+    ```
+    - El enrutamiento genetal es `http://localhost:5173/` sin embargo esto puede cambiar segun las especificaciones del usuario
+
+### Panel de inicio:
+- El panel de inicio es una pagina sobria, con la informacion acerca del sistema de gestion, sus servicios horarios y hubicacion y una barra de navegacion con la opcion de iniciar sesion
+- El enrutamiento es : `http://localhost:5173/`
+<img src="./imgs/panelInicio.png"/>
+
+### Inicio de sesion:
+- El panel de inicio de sesion consiste en un formulario con correo electronico y contraseña para niciar sesion, o en dado caso de no poseer cuenta registrarse, el boton de registro no es funcional
+- El enrutamiento es : `http://localhost:5173/login`
+<img src="./imgs/login.png"/>
+    
 ## Sistemas de Referencia
 
 - **Koha**: Sistema de código abierto para la gestión de bibliotecas, utilizado a nivel mundial.
 - **Evergreen**: Sistema utilizado por consorcios de bibliotecas públicas, con soporte para API y bibliotecas múltiples.
 - **LibraryWorld**: Sistema basado en la nube, ideal para bibliotecas pequeñas.
-
-## Planteamiento base de datos
-
-El siguiente es un planteamiento inicial para la base de datos que manaejaria el sistema:
-
-<img src="./imgs/Base de datos biblioteca.png"/>
