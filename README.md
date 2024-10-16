@@ -23,6 +23,7 @@ Este proyecto tiene como objetivo desarrollar un sistema para la gestión de bib
 7. [Planteamiento Base de Datos](#planteamiento-base-de-datos)
 7. [Planteamiento Interfaz](#planteamiento-interfaz)
 9. [Sistemas de Referencia](#sistemas-de-referencia)
+10. [Documento del Proyecto](#documento-del-proyecto)
 
 ---
 
@@ -443,3 +444,7 @@ El siguiente es un planteamiento inicial para la base de datos que manaejaria el
 - **Koha**: Sistema de código abierto para la gestión de bibliotecas, utilizado a nivel mundial.
 - **Evergreen**: Sistema utilizado por consorcios de bibliotecas públicas, con soporte para API y bibliotecas múltiples.
 - **LibraryWorld**: Sistema basado en la nube, ideal para bibliotecas pequeñas.
+
+## Documento del proyecto
+- Para mas informacion, puede leer la documentacion mas especifica acerca del proyecto en el siguiente link:
+https://mailudesedu-my.sharepoint.com/:w:/g/personal/01220371068_mail_udes_edu_co/ERc1xJT-xAxCk4rEM8odO60B0S7mkRSzA2hj5M8Jv8Sh0w?e=OuR44E
