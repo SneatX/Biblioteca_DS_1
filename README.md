@@ -19,9 +19,8 @@ Este proyecto tiene como objetivo desarrollar un sistema para la gestión de bib
 3. [Clases Principales](#clases-principales)
 4. [Patrones de Diseño Implementados](#patrones-de-diseño-implementados)
 5. [Requisitos del Sistema](#requisitos-del-sistema)
-6. [Diagramas](#diagramas)
-7. [Tecnologías Utilizadas](#tecnologías-utilizadas)
-8. [Sistemas de Referencia](#sistemas-de-referencia)
+6. [Tecnologías Utilizadas](#tecnologías-utilizadas)
+7. [Sistemas de Referencia](#sistemas-de-referencia)
 
 ---
 
@@ -55,9 +54,189 @@ Este sistema busca mejorar la eficiencia operativa de las bibliotecas, facilitan
 4. **Informes y Estadísticas**:
    - Generación de informes sobre préstamos, devoluciones, reservas y uso del catálogo.
 
+<img src="./imgs/Casos de uso biblioteca.png"/>
+
 ## Clases principales
 
-1. ****
+1. **Clase Usuario**: Es la base de todos los tipos de usuarios en el sistema y gestiona la autenticación y el manejo de credenciales. Además, incluye atributos adicionales como dirección, teléfono y fecha de nacimiento
+
+- Atributos:
+  - `nomUsuario`: Nombre de usuario.
+  - `contraseña`: Contraseña del usuario.
+  - `nombres`: Nombre(s) del usuario.
+  - `apellidos`: Apellidos del usuario.
+  - `direccion`: Dirección del usuario.
+  - `telefono`: Número de teléfono.
+  - `rol`: Rol del usuario (Administrador, Bibliotecario, Usuario Final).
+  - `correoElectronico`: Correo del usuario.
+  - `fechaNacimiento`: Fecha de nacimiento del usuario.
+- Metodos:
+  - `autenticarse()`: Permite a los usuarios autenticarse en el sistema.
+  - `cambiarContraseña()`: Permite a los usuarios cambiar su contraseña.
+- Codigo:
+
+```bash
+class Usuario:
+   def __init__(self, nombre, correo, identificacion, rol, contraseña):
+       self.nombre = nombre
+       self.correo = correo
+       self.identificacion = identificacion
+       self.rol = rol
+       self.contraseña = contraseña
+
+   def autenticarse(self, correo, contraseña):
+       return self.correo == correo and self.contraseña == contraseña
+
+   def cambiarContraseña(self, nuevaContraseña):
+       self.contraseña = nuevaContraseña
+```
+
+2. **Clase Administrador**: Hereda de Usuario y tiene las siguientes responsabilidades: gestionar roles, gestionar usuarios, generar informes y gestionar la información de los libros.
+
+- Metodos:
+  - `gestionarRoles()`: Asignar roles a los usuarios.
+  - `gestionarUsuarios()`: Crear, editar y eliminar usuarios.
+  - `generarInformes()`: Generar informes de préstamos, devoluciones y reservas.
+  - `gestionarInformacionLibros()`: Gestionar los detalles del catálogo de libros.
+- Codigo:
+
+```bash
+class Administrador(Usuario):
+   def gestionarRoles(self):
+       # Lógica para gestionar roles
+       pass
+
+   def gestionarUsuarios(self):
+       # Lógica para gestionar usuarios
+       pass
+
+   def generarInformes(self):
+       # Lógica para generar informes
+       pass
+```
+
+3. **Clase Bibliotecario**: Bibliotecario hereda de Usuario y tiene múltiples responsabilidades: registrar préstamos, registrar devoluciones, gestionar el catálogo de libros, buscar libros y gestionar la información de los libros.
+
+- Atributos:
+  - `puntoTrabajo`: Lugar físico donde trabaja el bibliotecario.
+- Metodos:
+  - `registrarPrestamo()`: Registrar el préstamo de un libro.
+  - `registrarDevolucion()`: Registrar la devolución de un libro.
+  - `gestionarCatalogo()`: Modificar, agregar o eliminar libros del catálogo.
+  - `gestionarInformacionLibros()`: Gestionar los detalles del catálogo de libros.
+  - `buscarLibros()`: Buscar libros en el sistema.
+- Codigo:
+
+```bash
+class Bibliotecario(Usuario):
+    def registrarPrestamo(self, libro, usuario):
+        # Lógica para registrar préstamo
+        pass
+
+    def registrarDevolucion(self, libro, usuario):
+        # Lógica para registrar devolución
+        pass
+
+    def gestionarCatalogo(self, libro):
+        # Lógica para gestionar el catálogo de libros
+        pass
+```
+
+4. **Usuario Final**: Hereda de Usuario y se enfoca en la búsqueda, reserva y consulta de disponibilidad de los libros.
+
+- Metodos:
+
+  - `buscarLibros()`: Buscar libros en el catálogo.
+  - `reservarLibro()`: Reservar un libro disponible.
+  - `consultarDisponibilidad()`: Consultar la disponibilidad de un libro.
+
+- Codigo:
+
+```bash
+class UsuarioFinal(Usuario):
+    def buscarLibros(self, criterio):
+        # Lógica para buscar libros por criterio
+        pass
+
+    def reservarLibro(self, libro):
+        # Lógica para reservar libro
+        pass
+
+    def consultarDisponibilidad(self, libro):
+        return libro.disponibilidad
+```
+
+5. **Libro**: es clave para representar los libros en el sistema y maneja su disponibilidad y la información básica del catálogo.
+
+- Atributos:
+
+  - `ISBN`: Código único del libro.
+  - `titulo`: Título del libro.
+  - `autor`: Autor del libro.
+  - `genero`: Género o categoría del libro.
+  - `ubicacion`: Ubicación del libro en la biblioteca.
+  - `disponibilidad`: Estado de disponibilidad del libro (Disponible/Prestado/Reservado).
+  - `idEditorial`: Identificador de la editorial.
+  - `idioma`: Idioma del libro.
+  - `año`: Año de publicación.
+  - `edicion`: Edición del libro.
+  - `idCategoria`: Identificador de la categoría.
+
+- Metodos:
+
+  - `actualizarDisponibilidad()`: Cambiar el estado de disponibilidad del libro.
+  - `obtenerInformacion()`: Obtener información completa del libro.
+
+- Codigo:
+
+```bash
+class Libro:
+    def __init__(self, titulo, autor, isbn, genero, ubicacion, disponibilidad=True):
+        self.titulo = titulo
+        self.autor = autor
+        self.isbn = isbn
+        self.genero = genero
+        self.ubicacion = ubicacion
+        self.disponibilidad = disponibilidad
+
+    def actualizarDisponibilidad(self, estado):
+        self.disponibilidad = estado
+
+    def obtenerInformacion(self):
+        return f"{self.titulo} - {self.autor}, ISBN: {self.isbn}"
+```
+
+6. **Reserva**: gestiona la reserva de libros por parte de los usuarios.
+
+- Atributos:
+
+  - `libro`: El libro reservado.
+  - `usuario`: El usuario que realiza la reserva.
+  - `fechaReserva`: La fecha en la que se realiza la reserva.
+
+- Metodos:
+
+  - `reservar()`: Realiza la reserva de un libro.
+  - `cancelarReserva()`: Cancela la reserva de un libro.
+
+- Codigo:
+
+```bash
+class Reserva:
+    def __init__(self, libro, usuario, fechaReserva=date.today()):
+        self.libro = libro
+        self.usuario = usuario
+        self.fechaReserva = fechaReserva
+
+    def reservar(self):
+        # Lógica para reservar libro
+        pass
+
+    def cancelarReserva(self):
+        # Lógica para cancelar reserva
+        pass
+```
+<img src="imgs/diagramaClases.png">
 
 ## Patrones de Diseño Implementados
 
@@ -191,23 +370,6 @@ class Libro:
 - **Rendimiento**: El sistema debe ser capaz de manejar hasta 10,000 libros con un tiempo de respuesta de búsqueda menor a 2 segundos.
 - **Escalabilidad**: Diseñado para soportar un aumento en la cantidad de usuarios y libros.
 - **Seguridad**: Control de acceso basado en roles y encriptación de contraseñas.
-
-## Diagramas
-
-### Diagrama UML de Clases
-
-El sistema incluye las siguientes clases principales:
-
-- `Usuario` (base para todos los tipos de usuarios)
-- `Administrador`
-- `Bibliotecario`
-- `UsuarioFinal`
-- `Libro`
-- `Prestamo`
-- `Reserva`
-- `Informe`
-
-<img src="imgs/diagramaClases.png">
 
 ## Tecnologías Utilizadas
 
