@@ -75,7 +75,7 @@ Este sistema busca mejorar la eficiencia operativa de las bibliotecas, facilitan
   - `cambiarContraseña()`: Permite a los usuarios cambiar su contraseña.
 - Codigo:
 
-```bash
+```python
 class Usuario:
    def __init__(self, nombre, correo, identificacion, rol, contraseña):
        self.nombre = nombre
@@ -100,7 +100,7 @@ class Usuario:
   - `gestionarInformacionLibros()`: Gestionar los detalles del catálogo de libros.
 - Codigo:
 
-```bash
+```python
 class Administrador(Usuario):
    def gestionarRoles(self):
        # Lógica para gestionar roles
@@ -127,7 +127,7 @@ class Administrador(Usuario):
   - `buscarLibros()`: Buscar libros en el sistema.
 - Codigo:
 
-```bash
+```python
 class Bibliotecario(Usuario):
     def registrarPrestamo(self, libro, usuario):
         # Lógica para registrar préstamo
@@ -152,7 +152,7 @@ class Bibliotecario(Usuario):
 
 - Codigo:
 
-```bash
+```python
 class UsuarioFinal(Usuario):
     def buscarLibros(self, criterio):
         # Lógica para buscar libros por criterio
@@ -189,7 +189,7 @@ class UsuarioFinal(Usuario):
 
 - Codigo:
 
-```bash
+```python
 class Libro:
     def __init__(self, titulo, autor, isbn, genero, ubicacion, disponibilidad=True):
         self.titulo = titulo
@@ -221,7 +221,7 @@ class Libro:
 
 - Codigo:
 
-```bash
+```python
 class Reserva:
     def __init__(self, libro, usuario, fechaReserva=date.today()):
         self.libro = libro
@@ -236,6 +236,7 @@ class Reserva:
         # Lógica para cancelar reserva
         pass
 ```
+
 <img src="imgs/diagramaClases.png">
 
 ## Patrones de Diseño Implementados
@@ -250,7 +251,7 @@ class Reserva:
 
    - Ejemplo de la implementacion del patron:
 
-```bash
+```python
 import sqlite3
 from sqlite3 import Error
 
@@ -295,7 +296,7 @@ if __name__ == "__main__":
 
 - Director: Es responsable de gestionar el proceso de construcción.
 
-```bash
+```python
 class Director:
     def __init__(self, builder):
         self._builder = builder
@@ -311,7 +312,7 @@ class Director:
 
 - Clase Builder: contiene los pasos para construir un objeto `Libro`.
 
-```bash
+```python
 class LibroBuilder:
     def __init__(self):
         self.libro = Libro(None, None, None, None, None)
@@ -337,7 +338,7 @@ class LibroBuilder:
 
 - Clase Libro modificada: sigue siendo la misma, pero ahora es construida usando el patrón Builder.
 
-```bash
+```python
 class Libro:
     def __init__(self, titulo, autor, isbn, genero, ubicacion, disponibilidad=True):
         self.titulo = titulo
@@ -352,7 +353,6 @@ class Libro:
 
     def obtenerInformacion(self):
         return f"{self.titulo} - {self.autor}, ISBN: {self.isbn}"
-
 ```
 
 ## Requisitos del Sistema
@@ -384,3 +384,9 @@ class Libro:
 - **Koha**: Sistema de código abierto para la gestión de bibliotecas, utilizado a nivel mundial.
 - **Evergreen**: Sistema utilizado por consorcios de bibliotecas públicas, con soporte para API y bibliotecas múltiples.
 - **LibraryWorld**: Sistema basado en la nube, ideal para bibliotecas pequeñas.
+
+## Planteamiento base de datos
+
+El siguiente es un planteamiento inicial para la base de datos que manaejaria el sistema:
+
+<img src="./imgs/Base de datos biblioteca.png"/>
