@@ -6,7 +6,7 @@ import NavBar from '../components/NavBar';
 const AdminPanel = () => {
   return (
     <>
-      <NavBar options={["about", "contact", "user", "logout"]} />
+      <NavBar options={["home", "logout"]} />
       <div className="space-y-6 p-4">
         <h1 className="text-3xl font-bold">Panel de Administrador</h1>
         

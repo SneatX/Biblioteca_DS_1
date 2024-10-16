@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar';
 const UserPanel = () => {
   return (
     <>
-      <NavBar options={["about", "contact", "user", "logout"]} />
+      <NavBar options={["home", "logout"]} />
       <main className="space-y-6 p-4">
         <h1 className="text-3xl font-bold">Panel de Usuario</h1>
         <section className="bg-white p-6 rounded-lg shadow-md">

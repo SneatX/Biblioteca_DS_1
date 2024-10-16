@@ -5,7 +5,7 @@ import NavBar from '../components/NavBar';
 const LibrarianPanel = () => {
   return (
     <>
-      <NavBar options={["about", "contact", "user", "logout"]} />
+      <NavBar options={["home", "logout"]} />
       <section className='p-4'>
         <h1 className="text-3xl font-bold">Panel de Bibliotecario</h1>
 

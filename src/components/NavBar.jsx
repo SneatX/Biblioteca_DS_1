@@ -43,7 +43,6 @@ export default function NavBar({options}){
         <div className="space-x-4">
           {
             options.map(option =>{
-              console.log("xd")
               return (
                 pathsOptions[option] ? <Link key={pathsOptions[option].label} to={pathsOptions[option].path} className="hover:underline">{pathsOptions[option].label}</Link> : <Link to={pathsOptions["default"].path} className="hover:underline">{pathsOptions["default"].label}</Link>
               )

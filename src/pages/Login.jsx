@@ -7,7 +7,15 @@ const Login = () => {
 
   const onSubmit = (data) => {
     console.log(data);  
-    window.location.href = '/user';
+    if(data.email=="user@example.com"){
+       window.location.href = '/user'
+    }else if(data.email=="admin@example.com"){
+      window.location.href="/admin"
+    }else if(data.email=="librarian@example.com"){
+      window.location.href="/librarian"
+    }else {
+      alert("Usuario no encontrado")
+    }
   };
 
   return (
