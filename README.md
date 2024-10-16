@@ -411,13 +411,32 @@ El siguiente es un planteamiento inicial para la base de datos que manaejaria el
 
 ### Panel de inicio:
 - El panel de inicio es una pagina sobria, con la informacion acerca del sistema de gestion, sus servicios horarios y hubicacion y una barra de navegacion con la opcion de iniciar sesion
-- El enrutamiento es : `http://localhost:5173/`
+- El enrutamiento es: `http://localhost:5173/`
 <img src="./imgs/panelInicio.png"/>
 
 ### Inicio de sesion:
 - El panel de inicio de sesion consiste en un formulario con correo electronico y contraseña para niciar sesion, o en dado caso de no poseer cuenta registrarse, el boton de registro no es funcional
-- El enrutamiento es : `http://localhost:5173/login`
+- El enrutamiento es: `http://localhost:5173/login`
+- Aunque el enturatmiento no esta protegido, si desea simular un loggeo use la siguiente informacion:
+    - Para loguearse como usuario coloque el siguiente correo: `user@example.com` con cualquier contraseña
+    - Para loguearse como administrador coloque el siguiente correo: `admin@example.com` con cualquier contraseña
+    - Para loguearse como bibliotecario coloque el siguiente correo: `librarian@example.com` con cualquier contraseña
 <img src="./imgs/login.png"/>
+
+### Panel de usuario
+- EL panel de usuario es un panel donde el usuario podra consultar los libros para posterirmente hacer peticion de su prestamo o apartarlo en caso de que las existencias se encuentren todas en prestamo, ademas podra ver el registro de sus prestamos con respectivo estado
+- El enrutamiento es: `http://localhost:5173/user`
+<img src="./imgs/panelUsuario.png"/>
+
+### Panel de administrador
+- EL panel de administrado es un panel donde el administrador podra dar permisos de bibliotecario o quitarlos a un usuario, consultar, crear y modificar libros ademas de generar informes
+- El enrutamiento es: `http://localhost:5173/admin`
+<img src="./imgs/panelAdmin.png"/>
+
+### Panel de bibliotecario
+- EL panel de bibliotecario es un panel donde los bibliotecarios podran llevar un control de inventario de su punto fisico, gestionar los prestamos y devoluciones de este, ademas de modificar caracteristicas de los libros
+- El enrutamiento es: `http://localhost:5173/librarian`
+<img src="./imgs/panelBibliotecario.png"/>
     
 ## Sistemas de Referencia
 
