@@ -385,7 +385,7 @@ class Libro:
 
 El siguiente es un planteamiento inicial para la base de datos que manaejaria el sistema:
 
-<img src="./imgs/Base de datos biblioteca.png"/
+<img src="./imgs/Basededatosbiblioteca.png"/>
 
 ## Planteamiento Interfaz
 - **1. Instalacion**: Si desea desplegar la interfaz propuesta en su ordenador siga los siguientes pasos
