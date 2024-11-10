@@ -65,7 +65,7 @@ CREATE TABLE libro_localidad (
 );
 
 CREATE TABLE usuario (
-    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario VARCHAR(150) PRIMARY KEY,
     contraseña VARCHAR(255) NOT NULL,
     nombres VARCHAR(100) NOT NULL,
     apellidos VARCHAR(100) NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE usuario (
 );
 
 CREATE TABLE bibliotecario (
-    id_usuario INT PRIMARY KEY AUTO_INCREMENT,
+    id_usuario VARCHAR(150) NOT NULL,
     localidad INTEGER NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES usuario (id_usuario),
     FOREIGN KEY (localidad) REFERENCES punto_trabajo (punto_trabajo_id)
@@ -87,7 +87,7 @@ CREATE TABLE prestamo (
     id_libro VARCHAR(20) NOT NULL,        
     id_localidad INTEGER NOT NULL,        
     num_inventario VARCHAR(50) NOT NULL,  
-    id_usuario INT NOT NULL,
+    id_usuario VARCHAR(150) NOT NULL,
     fecha_inicio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_fin TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
     fecha_dev TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -154,22 +154,26 @@ INSERT INTO libro_localidad (id_libro, id_localidad, num_inventario, estado, cos
 ('978-0-06-121943-5', 5, 'INV005', 'Prestado', 2.5);
 
 -- Insertar usuarios
-INSERT INTO usuario (contraseña, nombres, apellidos, direccion, telefono, rol, correo_electronico, fecha_nacimiento) VALUES
-('pass1234', 'Juan', 'Pérez', 'Calle Ficticia 123', '555-1234', 'usuario_final', 'juan.perez@email.com', '1985-06-15'),
-('admin1234', 'Carlos', 'Martínez', 'Calle Ejemplo 456', '555-5678', 'administrador', 'carlos.martinez@email.com', '1975-09-20'),
-('pass5678', 'Ana', 'Gómez', 'Calle Real 789', '555-8765', 'bibliotecario', 'ana.gomez@email.com', '1990-03-30'),
-('pass9876', 'Luis', 'Sánchez', 'Av. Reforma 101', '555-4321', 'usuario_final', 'luis.sanchez@email.com', '1988-11-22'),
-('admin5678', 'Eva', 'López', 'Calle Luna 202', '555-2345', 'administrador', 'eva.lopez@email.com', '1980-12-05');
+-- Insertar usuarios
+INSERT INTO usuario (id_usuario, contraseña, nombres, apellidos, direccion, telefono, rol, correo_electronico, fecha_nacimiento) VALUES
+('user_1', 'pass1234', 'Juan', 'Pérez', 'Calle Ficticia 123', '555-1234', 'usuario_final', 'juan.perez@email.com', '1985-06-15'),
+('admin_2', 'admin1234', 'Carlos', 'Martínez', 'Calle Ejemplo 456', '555-5678', 'administrador', 'carlos.martinez@email.com', '1975-09-20'),
+('librarian_3', 'pass5678', 'Ana', 'Gómez', 'Calle Real 789', '555-8765', 'bibliotecario', 'ana.gomez@email.com', '1990-03-30'),
+('user_4', 'pass9876', 'Luis', 'Sánchez', 'Av. Reforma 101', '555-4321', 'usuario_final', 'luis.sanchez@email.com', '1988-11-22'),
+('admin_5', 'admin5678', 'Eva', 'López', 'Calle Luna 202', '555-2345', 'administrador', 'eva.lopez@email.com', '1980-12-05'),
+('librarian_4', 'pass2345', 'Pedro', 'Ramírez', 'Calle Sol 303', '555-1122', 'bibliotecario', 'pedro.ramirez@email.com', '1982-07-14'),
+('user_5', 'userpass123', 'Laura', 'García', 'Av. Libertad 500', '555-6677', 'usuario_final', 'laura.garcia@email.com', '1995-02-18');
+
 
 -- Insertar bibliotecarios
 INSERT INTO bibliotecario (id_usuario, localidad) VALUES
-(3, 1),
-(4, 2);
+("librarian_3", 1),
+("librarian_4", 2);
 
 -- Insertar préstamos
 INSERT INTO prestamo (id_libro, id_localidad, num_inventario, id_usuario, fecha_inicio, fecha_fin, fecha_dev, valor_pactado_dia) VALUES
-('978-3-16-148410-0', 1, 'INV001', 1, '2024-11-01 10:00:00', '2024-11-10 10:00:00', '2024-11-09 12:00:00', 1.5),
-('978-0-7475-3269-9', 2, 'INV002', 2, '2024-11-02 14:00:00', '2024-11-09 14:00:00', '2024-11-08 16:00:00', 2.0),
-('978-0-452-28423-4', 3, 'INV003', 4, '2024-11-03 09:00:00', '2024-11-15 09:00:00', '2024-11-13 11:00:00', 1.2),
-('978-0-06-112241-5', 4, 'INV004', 5, '2024-11-04 16:00:00', '2024-11-20 16:00:00', '2024-11-18 18:00:00', 1.8),
-('978-0-06-121943-5', 5, 'INV005', 1, '2024-11-05 11:00:00', '2024-11-12 11:00:00', '2024-11-10 14:00:00', 2.5);
+('978-3-16-148410-0', 1, 'INV001', "user_1", '2024-11-01 10:00:00', '2024-11-10 10:00:00', '2024-11-09 12:00:00', 1.5),
+('978-0-7475-3269-9', 2, 'INV002', "user_4", '2024-11-02 14:00:00', '2024-11-09 14:00:00', '2024-11-08 16:00:00', 2.0),
+('978-0-452-28423-4', 3, 'INV003', "user_4", '2024-11-03 09:00:00', '2024-11-15 09:00:00', '2024-11-13 11:00:00', 1.2),
+('978-0-06-112241-5', 4, 'INV004', "user_5", '2024-11-04 16:00:00', '2024-11-20 16:00:00', '2024-11-18 18:00:00', 1.8),
+('978-0-06-121943-5', 5, 'INV005', "user_1", '2024-11-05 11:00:00', '2024-11-12 11:00:00', '2024-11-10 14:00:00', 2.5);
